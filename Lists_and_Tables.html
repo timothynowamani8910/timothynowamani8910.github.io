@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTS</title>
+    <link rel="icon" href="MY Passport photo.jpeg">
+    <style>
+        table,td,th{
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        div li {
+            font-weight: bold;
+            padding: 3px;
+        }
+        td{
+            vertical-align: top;
+            padding: 5px;
+            text-align: left;
+        }   
+        .ol-table {
+            padding-left: 20px;
+            text-align: left;
+            font-weight: bold;
+        }
+        .break, .lunch{
+            writing-mode: vertical-lr;
+            text-orientation: upright;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="Aboutme.html">ABOUT ME</a>
+    <ol type="i">
+        <li>a <sup>2</sup> + b <sup>2</sup> = c <sup>2</sup></li>
+        <br>
+        <li>log <sub>b</sub> a = log <sub>c</sub> a / log <sub>c</sub>b</li>
+        <br>
+        <li>This text contains <sup>sensitive</sup> information which may be <sub>deciphered</sub> by <span style="color: rgb(128, 8, 8); font-weight: bold; font-style: italic">NASA</span></li>
+    </ol>
+    <div>
+    <ol type="i">
+        <li>My First List</li>
+        <ol>
+            <li>Fruits</li>
+            <ol type="i">
+                <li>Berries</li>
+                <ul type="circle">
+                    <li>Apples</li>
+                    <li>Tomatoes</li>
+                </ul>
+                <li>Drupes</li>
+                <ul type="square">
+                    <li>Mango</li>
+                    <li>Avocado</li>
+                </ul>
+            </ol>
+            <li>Vegetables</li>
+            <ol type="a">
+                <li>Leafy</li>
+                <ul type="disc">
+                    <li>Kale</li>
+                    <li>Spinach</li>
+                </ul>
+                <li>Non-Leafy</li>
+                <ul type="disc">
+                    <li>Cabbage</li>
+                </ul>
+            </ol>
+            <li>Meats</li>
+            <ul type="disc">
+                <li>White Meats</li>
+                <ol type="A">
+                    <li>Chicken</li>
+                    <li>Tuna</li>
+                </ol>
+                <li>Red Meats</li>
+                <ol type="I">
+                    <li>Beef</li>
+                    <li>Mutton</li>
+                </ol>
+            </ul>
+        </ol>
+        <br>
+        <hr>
+        <br>
+        <li>My Second List</li>
+        <ol type="A">
+            <li>Fruits</li>
+            <ol type="1">
+                <li>Berries</li>
+                <ol type="a">
+                    <li>Apples</li>
+                    <li>Tomatoes</li>
+                </ol>
+                <li>Drupes</li>
+                <ol type="i">
+                    <li>Mango</li>
+                    <li>Avocado</li>
+                </ol>
+            </ol>
+            <li>Vegetables</li>
+            <ul type="disc">
+                <li>Leafy</li>
+                <ol type="i">
+                    <li>Kale</li>
+                    <li>Spinach</li>
+                </ol>
+                <li>Non-Leafy</li>
+                <ol type="a">
+                    <li>Cabbage</li>
+                </ol>
+            </ul>
+            <li>Meats</li>
+            <ul type="square">
+                <li>White Meats</li>
+            </ul>
+        </ol>
+        <br>
+        <li>My First Table</li>
+        <br>
+        <table>
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td>SCS101</td>
+                <td>SCS104</td>
+                <td>SCS105</td>
+                <td> </td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td> </td>
+                <td>SCS104</td>
+                <td> </td>
+                <td>SCS105</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>SCS101</td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td>SCS101</td>
+                <td> </td>
+                <td> </td>
+                <td>SCS102</td>
+                <td>SCS102</td>
+            </tr>
+        </table>
+        <br>
+        <li>My Second Table</li>
+        <br>
+        <table>
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td rowspan="2">SCS101</td>
+                <td>SCS104</td>
+                <td>SCS105</td>
+                <td rowspan="2"> </td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>SCS104</td>
+                <td>SCS105</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>SCS101</td>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td>SCS101</td>
+                <td> </td>
+                <td> </td>
+                <td>SCS102</td>
+                <td>SCS102</td>
+            </tr>
+        </table>
+        <br>
+        <li>My Third Table</li>
+        <br>
+        <table>
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td rowspan="2">SCS101</td>
+                <td>SCS104</td>
+                <td>SCS105</td>
+                <td rowspan="2">
+                    <ol type="i" class="ol-table">
+                    <li>Eat</li>
+                    <li>Sleep</li>
+                    </ol>
+                </td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>SCS104</td>
+                <td>SCS105</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>SCS101</td>
+                <td colspan="3"> </td>
+            </tr>
+            <tr>
+                <td>SCS101</td>
+                <td> </td>
+                <td> </td>
+                <td>SCS192</td>
+                <td>SCS102</td>
+            </tr>
+        </table>
+        <br>
+        <li>My Forth Table</li>
+        <br>
+        <table>
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th> </th>
+                <th>Wednesday</th>
+                <th> </th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td>SCS101</td>
+                <td>SCS104</td>
+                <td rowspan="4" class="break">BREAK</td>
+                <td>SCS105</td>
+                <td rowspan="4" class="lunch">LUNCH </td>
+                <td rowspan="4">SCS102</td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td rowspan="3">SCS111</td>
+                <td rowspan="3"> </td>
+                <td rowspan="3">SCS104</td>
+                <td rowspan="3">SCS105</td>
+            </tr>
+            <tr>
+            
+            </tr>
+            <tr>
+
+            </tr>   
+        </table>
+    </ol>
+    </div>
+</body>
+</html>

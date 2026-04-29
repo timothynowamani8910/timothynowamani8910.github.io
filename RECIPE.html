@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇺🇬 Taste of Uganda | Rolex Recipe - Street Food Special</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fef6e0 0%, #f0e6c5 100%);
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            color: #2c1810;
+        }
+
+        /* Main container */
+        .recipe-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        /* Hero section with Ugandan colors */
+        .recipe-hero {
+            background: linear-gradient(135deg, #1a3c2e, #e6a017, #d62828);
+            padding: 2rem 2rem 1.5rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recipe-hero::before {
+            content: "🇺🇬";
+            font-size: 8rem;
+            position: absolute;
+            opacity: 0.1;
+            right: -20px;
+            top: -20px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        /* Content layout */
+        .recipe-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .recipe-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Left column - Ingredients */
+        .ingredients-section {
+            background: #fffaf0;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: #d62828;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 3px solid #e6a017;
+            padding-bottom: 0.5rem;
+        }
+
+        .ingredients-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .ingredients-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #ffe0b5;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .ingredients-list li:hover {
+            transform: translateX(5px);
+            background: #fff5e8;
+            padding-left: 0.5rem;
+        }
+
+        .ingredient-check {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            accent-color: #e6a017;
+        }
+
+        .ingredient-text {
+            flex: 1;
+            font-size: 1rem;
+        }
+
+        .ingredient-text.checked {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        /* Progress card */
+        .progress-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .progress-text {
+            font-weight: bold;
+            color: #d62828;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #ffe0b5;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e6a017, #d62828);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+
+        /* Right column - Instructions */
+        .instructions-section {
+            background: #fffef7;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .steps-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .steps-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #faf5ea;
+            border-radius: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .steps-list li:hover {
+            background: #fff0e0;
+            transform: translateX(5px);
+        }
+
+        .step-number {
+            background: #e6a017;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .step-text.completed {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        /* Fun Fact Section */
+        .fun-fact {
+            background: #fff5e6;
+            padding: 1rem 2rem;
+            margin-top: 1rem;
+            border-radius: 1rem;
+            border-left: 4px solid #e6a017;
+        }
+
+        /* Action Bar */
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .favorite-btn {
+            background: linear-gradient(135deg, #d62828, #e6a017);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 3rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .favorite-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(210, 69, 30, 0.4);
+        }
+
+        .serving-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+        }
+
+        .serving-control button {
+            background: #e6a017;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .serving-control button:hover {
+            background: #d62828;
+            color: white;
+        }
+
+        .serving-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .reset-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: #e0e0e0;
+        }
+
+        footer {
+            background: #1a3c2e;
+            color: #ffd9b5;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.85rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="recipe-container">
+    <div class="recipe-hero">
+        <h1>🇺🇬 Rolex - Ugandan Street Food</h1>
+        <div class="tagline">"Rolled Chapati with Eggs & Fresh Vegetables — The Taste of Kampala Streets!"</div>
+    </div>
+
+    <div class="recipe-content">
+        <!-- INGREDIENTS SECTION -->
+        <div class="ingredients-section">
+            <div class="section-title">
+                <span>🥬</span> Ingredients
+            </div>
+            <ul class="ingredients-list" id="ingredientsList">
+                <li data-id="ing1">
+                    <input type="checkbox" class="ingredient-check">
+                    <span class="ingredient-text">2 cups all-purpose flour (for chapatis)</span>
+                </li>
+                <li data-id="ing2">
+                    <input type="checkbox" class="ingredient-check">
+                    <span class="ingredient-text">½ tsp salt</span>
+                </li>
+                <li data-id="ing3">
+                    <input type="checkbox" class="ingredient-check">
+                    <span class="ingredient-text">2 tbsp vegetable oil + extra for cooking</span>
+                </li>
+                <li data-id="ing4">
+                    <input type="checkbox" class="ingredient-check">
+                    <span class="ingredient-text">¾ cup warm water</span>
+                </li>
+                <li data-id="ing5">
+                    <input type="checkbox" class="ingredient-check">
+                    <span class="ingredient-text">4 large eggs</span>
+                </li>
+                <li data-id="ing6">
+                    <input type="checkbox" class="ingredient-check">
+                    <span class="ingredient-text">1 medium onion (finely chopped)</span>
+                </li>
+                <li data-id="ing7">
+                    <input type="checkbox" class="ingredient-check">
+                    <span class="ingredient-text">2 tomatoes (diced)</span>
+                </li>
+                <li data-id="ing8">
+                    <input type="checkbox" class="ingredient-check">
+                    <span class="ingredient-text">1 cup cabbage (shredded)</span>
+                </li>
+                <li data-id="ing9">
+                    <input type="checkbox" class="ingredient-check">
+                    <span class="ingredient-text">1 carrot (grated)</span>
+                </li>
+                <li data-id="ing10">
+                    <input type="checkbox" class="ingredient-check">
+                    <span class="ingredient-text">Fresh green peppers (optional)</span>
+                </li>
+                <li data-id="ing11">
+                    <input type="checkbox" class="ingredient-check">
+                    <span class="ingredient-text">Salt & black pepper to taste</span>
+                </li>
+            </ul>
+
+            <div class="progress-card">
+                <div class="progress-text">📋 Shopping List Progress</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div id="ingredientCounter" style="margin-top: 0.5rem; font-size: 0.9rem;">0/11 checked</div>
+            </div>
+        </div>
+
+        <!-- INSTRUCTIONS SECTION -->
+        <div class="instructions-section">
+            <div class="section-title">
+                <span>👩‍🍳</span> How to Make Rolex
+            </div>
+            <ol class="steps-list" id="stepsList">
+                <li data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-text">Make chapati dough: Mix flour, salt, oil, and warm water. Knead for 5-7 minutes until smooth.</span>
+                </li>
+                <li data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-text">Rest dough for 30 minutes covered with a damp cloth.</span>
+                </li>
+                <li data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-text">Divide dough into small balls, roll each into thin circles.</span>
+                </li>
+                <li data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-text">Cook chapatis on hot pan until golden brown on both sides. Set aside.</span>
+                </li>
+                <li data-step="5">
+                    <span class="step-number">5</span>
+                    <span class="step-text">Sauté onions, tomatoes, cabbage, and carrots in a pan until soft.</span>
+                </li>
+                <li data-step="6">
+                    <span class="step-number">6</span>
+                    <span class="step-text">Whisk eggs with salt and pepper, pour over vegetables.</span>
+                </li>
+                <li data-step="7">
+                    <span class="step-number">7</span>
+                    <span class="step-text">Cook egg-vegetable mixture like an omelette until set.</span>
+                </li>
+                <li data-step="8">
+                    <span class="step-number">8</span>
+                    <span class="step-text">Place chapati flat, add egg mixture on top, roll tightly.</span>
+                </li>
+                <li data-step="9">
+                    <span class="step-number">9</span>
+                    <span class="step-text">Wrap in paper or foil (traditional street style) and enjoy!</span>
+                </li>
+            </ol>
+
+            <div class="fun-fact">
+                <strong>🇺🇬 Fun Fact:</strong> "Rolex" comes from "Rolled Eggs" — not the watch! It's Uganda's most popular street food, found on every corner in Kampala.
+            </div>
+        </div>
+    </div>
+
+    <!-- ACTION BAR -->
+    <div class="action-bar">
+        <button class="favorite-btn" id="favoriteBtn">
+            ❤️ Save to Favorites
+        </button>
+        <div class="serving-control">
+            <span>🍽️ Servings:</span>
+            <button id="decreaseServing">-</button>
+            <span class="serving-number" id="servingCount">2</span>
+            <button id="increaseServing">+</button>
+        </div>
+        <button class="reset-btn" id="resetBtn">⟳ Reset All Progress</button>
+    </div>
+
+    <footer>
+        🍴 Authentic Ugandan Recipe • Prep: 20min • Cook: 25min • Total: 1hr • 🇺🇬 Webale (Thank you)
+    </footer>
+</div>
+
+<script>
+    // ---------- JAVASCRIPT: Complete interactive functionality ----------
+    
+    // Data storage
+    let ingredientChecks = {};
+    let stepChecks = {};
+    let isFavorited = false;
+    let servings = 2;
+
+    // DOM elements
+    const ingredientsList = document.getElementById('ingredientsList');
+    const stepsList = document.getElementById('stepsList');
+    const progressFill = document.getElementById('progressFill');
+    const ingredientCounter = document.getElementById('ingredientCounter');
+    const favoriteBtn = document.getElementById('favoriteBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const servingCountSpan = document.getElementById('servingCount');
+    const decreaseBtn = document.getElementById('decreaseServing');
+    const increaseBtn = document.getElementById('increaseServing');
+
+    // Initialize ingredient texts (for dynamic serving adjustment)
+    let originalIngredientTexts = [];
+
+    // Load from localStorage
+    function loadState() {
+        // Load ingredients check state
+        const savedIngredients = localStorage.getItem('uganda_recipe_ingredients');
+        const ingredientItems = document.querySelectorAll('.ingredients-list li');
+        
+        ingredientItems.forEach((item, index) => {
+            const textSpan = item.querySelector('.ingredient-text');
+            const originalText = textSpan.innerText;
+            originalIngredientTexts.push(originalText);
+            
+            if (savedIngredients) {
+                const parsed = JSON.parse(savedIngredients);
+                ingredientChecks[originalText] = parsed[originalText] || false;
+            } else {
+                ingredientChecks[originalText] = false;
+            }
+        });
+
+        // Load steps state
+        const savedSteps = localStorage.getItem('uganda_recipe_steps');
+        const stepItems = document.querySelectorAll('.steps-list li');
+        stepItems.forEach(step => {
+            const stepTextSpan = step.querySelector('.step-text');
+            const stepText = stepTextSpan.innerText;
+            if (savedSteps) {
+                const parsed = JSON.parse(savedSteps);
+                stepChecks[stepText] = parsed[stepText] || false;
+            } else {
+                stepChecks[stepText] = false;
+            }
+        });
+
+        // Load favorite status
+        const savedFavorite = localStorage.getItem('uganda_recipe_favorite');
+        isFavorited = savedFavorite === 'true';
+        
+        // Load servings
+        const savedServings = localStorage.getItem('uganda_recipe_servings');
+        servings = savedServings ? parseInt(savedServings) : 2;
+        servingCountSpan.innerText = servings;
+        
+        updateUI();
+        updateIngredientsForServings();
+    }
+
+    // Update ingredient quantities based on servings
+    function updateIngredientsForServings() {
+        const ingredientItems = document.querySelectorAll('.ingredients-list li');
+        const baseQuantities = {
+            '2 cups all-purpose flour (for chapatis)': 2,
+            '½ tsp salt': 0.5,
+            '2 tbsp vegetable oil + extra for cooking': 2,
+            '¾ cup warm water': 0.75,
+            '4 large eggs': 4,
+            '1 medium onion (finely chopped)': 1,
+            '2 tomatoes (diced)': 2,
+            '1 cup cabbage (shredded)': 1,
+            '1 carrot (grated)': 1,
+            'Fresh green peppers (optional)': 1,
+            'Salt & black pepper to taste': 1
+        };
+        
+        ingredientItems.forEach(item => {
+            const textSpan = item.querySelector('.ingredient-text');
+            const originalText = textSpan.getAttribute('data-original') || textSpan.innerText;
+            
+            if (!textSpan.getAttribute('data-original')) {
+                textSpan.setAttribute('data-original', originalText);
+            }
+            
+            // Adjust quantities based on servings (base is for 2 servings)
+            for (let [key, baseQty] of Object.entries(baseQuantities)) {
+                if (originalText.includes(key.split(' ')[0]) || originalText === key) {
+                    let adjustedQty = (baseQty * servings) / 2;
+                    
+                    // Format numbers nicely
+                    if (adjustedQty % 1 !== 0) {
+                        adjustedQty = adjustedQty.toFixed(1);
+                    }
+                    
+                    let newText = originalText;
+                    if (typeof adjustedQty === 'number' && adjustedQty !== 1) {
+                        newText = originalText.replace(baseQty.toString(), adjustedQty.toString());
+                        if (baseQty === 1 && adjustedQty > 1) {
+                            // Handle pluralization for units
+                            if (newText.includes('onion')) newText = newText.replace('onion', 'onions');
+                            if (newText.includes('tomato')) newText = newText.replace('tomato', 'tomatoes');
+                            if (newText.includes('carrot')) newText = newText.replace('carrot', 'carrots');
+                        }
+                    }
+                    textSpan.innerText = newText;
+                    break;
+                }
+            }
+        });
+        
+        saveAllState();
+    }
+
+    // Update UI from stored state
+    function updateUI() {
+        // Update ingredient checkboxes
+        const ingredientItems = document.querySelectorAll('.ingredients-list li');
+        ingredientItems.forEach(item => {
+            const textSpan = item.querySelector('.ingredient-text');
+            const text = textSpan.innerText;
+            const originalKey = textSpan.getAttribute('data-original') || text;
+            const checkbox = item.querySelector('.ingredient-check');
+            const isChecked = ingredientChecks[originalKey] || false;
+            checkbox.checked = isChecked;
+            if (isChecked) {
+                textSpan.classList.add('checked');
+            } else {
+                textSpan.classList.remove('checked');
+            }
+        });
+
+        // Update step completion
+        const stepElements = document.querySelectorAll('.steps-list li');
+        stepElements.forEach(step => {
+            const stepTextSpan = step.querySelector('.step-text');
+            const stepText = stepTextSpan.innerText;
+            const isCompleted = stepChecks[stepText] || false;
+            if (isCompleted) {
+                stepTextSpan.classList.add('completed');
+            } else {
+                stepTextSpan.classList.remove('completed');
+            }
+        });
+
+        // Update progress
+        updateIngredientProgress();
+        
+        // Update favorite button
+        if (isFavorited) {
+            favoriteBtn.innerHTML = '⭐ Favorited! 🇺🇬';
+            favoriteBtn.style.background = 'linear-gradient(135deg, #f39c12, #e67e22)';
+        } else {
+            favoriteBtn.innerHTML = '❤️ Save to Favorites';
+            favoriteBtn.style.background = 'linear-gradient(135deg, #d62828, #e6a017)';
+        }
+    }
+
+    function updateIngredientProgress() {
+        const total = Object.keys(ingredientChecks).length;
+        const checked = Object.values(ingredientChecks).filter(v => v === true).length;
+        const percent = total === 0 ? 0 : (checked / total) * 100;
+        progressFill.style.width = `${percent}%`;
+        ingredientCounter.innerText = `${checked}/${total} checked`;
+    }
+
+    function saveAllState() {
+        localStorage.setItem('uganda_recipe_ingredients', JSON.stringify(ingredientChecks));
+        localStorage.setItem('uganda_recipe_steps', JSON.stringify(stepChecks));
+        localStorage.setItem('uganda_recipe_favorite', isFavorited);
+        localStorage.setItem('uganda_recipe_servings', servings);
+    }
+
+    // Handle ingredient toggle
+    function initIngredients() {
+        const items = document.querySelectorAll('.ingredients-list li');
+        items.forEach(item => {
+            const checkbox = item.querySelector('.ingredient-check');
+            const textSpan = item.querySelector('.ingredient-text');
+            const originalKey = textSpan.getAttribute('data-original') || textSpan.innerText;
+            
+            checkbox.addEventListener('change', (e) => {
+                ingredientChecks[originalKey] = e.target.checked;
+                if (e.target.checked) {
+                    textSpan.classList.add('checked');
+                } else {
+                    textSpan.classList.remove('checked');
+                }
+                updateIngredientProgress();
+                saveAllState();
+                
+                // Animation effect
+                textSpan.style.transform = 'scale(1.02)';
+                setTimeout(() => { textSpan.style.transform = 'scale(1)'; }, 200);
+            });
+        });
+    }
+
+    // Handle step completion
+    function setupStepListeners() {
+        const steps = document.querySelectorAll('.steps-list li');
+        steps.forEach(step => {
+            const stepTextSpan = step.querySelector('.step-text');
+            const stepText = stepTextSpan.innerText;
+            
+            step.addEventListener('click', () => {
+                stepChecks[stepText] = !stepChecks[stepText];
+                if (stepChecks[stepText]) {
+                    stepTextSpan.classList.add('completed');
+                    step.style.background = '#e0f2e9';
+                    setTimeout(() => { step.style.background = ''; }, 300);
+                } else {
+                    stepTextSpan.classList.remove('completed');
+                }
+                saveAllState();
+            });
+        });
+    }
+
+    // Reset everything
+    function resetAllProgress() {
+        if (confirm('Reset all progress? This will clear checkmarks and steps.')) {
+            for (let key in ingredientChecks) {
+                ingredientChecks[key] = false;
+            }
+            for (let key in stepChecks) {
+                stepChecks[key] = false;
+            }
+            isFavorited = false;
+            servings = 2;
+            servingCountSpan.innerText = servings;
+            updateUI();
+            updateIngredientsForServings();
+            saveAllState();
+            
+            // Show notification
+            const msg = document.createElement('div');
+            msg.textContent = '✨ All progress reset! ✨';
+            msg.style.position = 'fixed';
+            msg.style.bottom = '20px';
+            msg.style.right = '20px';
+            msg.style.background = '#1a3c2e';
+            msg.style.color = '#ffd9b5';
+            msg.style.padding = '0.8rem 1.5rem';
+            msg.style.borderRadius = '2rem';
+            msg.style.zIndex = '1000';
+            document.body.appendChild(msg);
+            setTimeout(() => msg.remove(), 2000);
+        }
+    }
+
+    // Toggle favorite
+    function toggleFavorite() {
+        isFavorited = !isFavorited;
+        updateUI();
+        saveAllState();
+        
+        if (isFavorited) {
+            favoriteBtn.style.animation = 'pulse 0.3s ease';
+            setTimeout(() => { favoriteBtn.style.animation = ''; }, 300);
+        }
+    }
+
+    // Adjust servings
+    function changeServing(delta) {
+        const newServings = servings + delta;
+        if (newServings >= 1 && newServings <= 10) {
+            servings = newServings;
+            servingCountSpan.innerText = servings;
+            updateIngredientsForServings();
+            saveAllState();
+        }
+    }
+
+    // Initialize everything
+    function init() {
+        loadState();
+        initIngredients();
+        setupStepListeners();
+        resetBtn.addEventListener('click', resetAllProgress);
+        favoriteBtn.addEventListener('click', toggleFavorite);
+        decreaseBtn.addEventListener('click', () => changeServing(-1));
+        increaseBtn.addEventListener('click', () => changeServing(1));
+    }
+
+    // Start the app
+    init();
+</script>
+</body>
+</html>

@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Mukasa David | Personal Bio & Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            color: #2d3748;
+        }
+
+        /* Main container */
+        .bio-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease;
+        }
+
+        /* Header with cover image */
+        .cover-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 1rem;
+        }
+
+        .location {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        /* Content layout */
+        .bio-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .bio-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Left column - Personal Info */
+        .info-section {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 3px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .info-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-icon {
+            font-size: 1.3rem;
+            min-width: 35px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #4a5568;
+            min-width: 80px;
+        }
+
+        .info-value {
+            color: #2d3748;
+            flex: 1;
+        }
+
+        /* Skills section */
+        .skills-section {
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        /* Right column - Bio & Experience */
+        .bio-section {
+            background: white;
+        }
+
+        .bio-text {
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-item {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+            background: #edf2f7;
+        }
+
+        .exp-title {
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.3rem;
+        }
+
+        .exp-company {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-desc {
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        /* Social links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-btn {
+            background: #edf2f7;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Contact form */
+        .contact-form {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.8rem;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+        }
+
+        body.dark-mode .bio-container {
+            background: #2d3748;
+        }
+
+        body.dark-mode .info-section,
+        body.dark-mode .experience-item,
+        body.dark-mode .contact-form {
+            background: #1a202c;
+        }
+
+        body.dark-mode .info-label,
+        body.dark-mode .info-value,
+        body.dark-mode .bio-text,
+        body.dark-mode .exp-desc {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .section-title {
+            color: #a3bffa;
+        }
+
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea {
+            background: #1a202c;
+            color: white;
+            border-color: #4a5568;
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bio-container {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* Visitor counter */
+        .visitor-counter {
+            text-align: center;
+            padding: 1rem;
+            background: #f7fafc;
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        body.dark-mode .visitor-counter {
+            background: #1a202c;
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle">🌙</button>
+
+<div class="bio-container">
+    <!-- Cover Section -->
+    <div class="cover-section">
+        <div class="avatar">
+            👨‍💻
+        </div>
+        <h1>Nowamani Timothy</h1>
+        <div class="title">Full Stack Developer & UI/UX Enthusiast</div>
+        <div class="location">
+            📍 Kampala, Uganda
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="bio-content">
+        <!-- Left Column: Personal Info -->
+        <div class="info-section">
+            <div class="section-title">
+                📋 Personal Details
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🎂</span>
+                <span class="info-label">Birth Date:</span>
+                <span class="info-value" id="birthDate">August 20, 2004</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📧</span>
+                <span class="info-label">Email:</span>
+                <span class="info-value">timothynowamani8910@gmail.com</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📱</span>
+                <span class="info-label">Phone:</span>
+                <span class="info-value">+256 771 516 605</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🎓</span>
+                <span class="info-label">Education:</span>
+                <span class="info-value">BSc in BITC - Kyambogo University</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">💼</span>
+                <span class="info-label">Experience:</span>
+                <span class="info-value" id="experienceYears">2+ years</span>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="skills-section">
+                <div class="section-title">
+                    ⚡ Technical Skills
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>JavaScript/React</span>
+                        <span id="skill1Percent">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="90" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Python/Django</span>
+                        <span id="skill2Percent">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="85" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>HTML/CSS</span>
+                        <span id="skill3Percent">95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="95" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Node.js</span>
+                        <span id="skill4Percent">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="80" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Language Skills -->
+            <div class="skills-section">
+                <div class="section-title">
+                    🗣️ Languages
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>English</span>
+                        <span>Fluent</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Luganda</span>
+                        <span>Native</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Swahili</span>
+                        <span>Intermediate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Bio & Experience -->
+        <div class="bio-section">
+            <div class="section-title">
+                👨 About Me
+            </div>
+            <div class="bio-text">
+                Passionate software developer from Kampala, Uganda with over 5 years of experience building 
+                web applications that solve real-world problems. I specialize in creating responsive, 
+                user-friendly interfaces and robust backend systems. When I'm not coding, I enjoy mentoring 
+                young developers and contributing to open-source projects.
+            </div>
+
+            <div class="section-title">
+                💼 Work Experience
+            </div>
+            <div class="experience-item">
+                <div class="exp-title">Senior Frontend Developer</div>
+                <div class="exp-company">Innovate Uganda Ltd • 2022 - Present</div>
+                <div class="exp-desc">Leading frontend development for e-commerce platforms, mentoring junior developers, and implementing responsive design systems.</div>
+            </div>
+            <div class="experience-item">
+                <div class="exp-title">Full Stack Developer</div>
+                <div class="exp-company">Tech Solutions Africa • 2019 - 2022</div>
+                <div class="exp-desc">Developed and maintained web applications for clients across East Africa, focusing on performance optimization and user experience.</div>
+            </div>
+            <div class="experience-item">
+                <div class="exp-title">Junior Web Developer</div>
+                <div class="exp-company">Digital Kampala • 2017 - 2019</div>
+                <div class="exp-desc">Built and maintained company websites, implemented SEO best practices, and provided technical support.</div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <div class="section-title">
+                    📬 Contact Me
+                </div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="3" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message ✉️</button>
+                </form>
+                <div id="formMessage" style="margin-top: 1rem; text-align: center; font-size: 0.9rem;"></div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-links">
+                <a href="#" class="social-btn" id="githubBtn">🐙 GitHub</a>
+                <a href="#" class="social-btn" id="linkedinBtn">🔗 LinkedIn</a>
+                <a href="#" class="social-btn" id="twitterBtn">🐦 Twitter</a>
+                <a href="#" class="social-btn" id="portfolioBtn">🌐 Portfolio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visitor Counter -->
+    <div class="visitor-counter">
+        🌍 Profile Views: <span id="visitorCount">0</span> • Last Updated: <span id="lastUpdated"></span>
+    </div>
+</div>
+
+<script>
+    // ---------- JAVASCRIPT: All interactive features ----------
+    
+    // Visitor counter using localStorage
+    let visitorCount = localStorage.getItem('profile_visits') || 0;
+    visitorCount = parseInt(visitorCount) + 1;
+    localStorage.setItem('profile_visits', visitorCount);
+    document.getElementById('visitorCount').innerText = visitorCount;
+    
+    // Last updated date
+    const lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('lastUpdated').innerText = lastUpdated;
+    
+    // Calculate experience years dynamically
+    function calculateExperience() {
+        const currentYear = new Date().getFullYear();
+        const startYear = 2024;
+        const years = currentYear - startYear;
+        document.getElementById('experienceYears').innerText = `${years}+ years`;
+    }
+    calculateExperience();
+    
+    // Calculate age dynamically
+    function calculateAge() {
+        const birthDate = new Date(2004, 8, 20); // June 15, 1995
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        document.getElementById('birthDate').innerHTML = `August 20, 2004 (${age} years old)`;
+    }
+    calculateAge();
+    
+    // Dark mode toggle with localStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        themeToggle.innerHTML = '☀️';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark);
+        themeToggle.innerHTML = isDark ? '☀️' : '🌙';
+        
+        // Animate toggle
+        themeToggle.style.transform = 'scale(1.1)';
+        setTimeout(() => { themeToggle.style.transform = ''; }, 200);
+    });
+    
+    // Contact form handling with localStorage
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    
+    // Load saved messages count
+    let messagesSent = localStorage.getItem('messages_sent') || 0;
+    
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        if (name && email && message) {
+            // Save message to localStorage (demo purposes)
+            const messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
+            messages.push({
+                name: name,
+                email: email,
+                message: message,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('contact_messages', JSON.stringify(messages));
+            
+            // Update counter
+            messagesSent++;
+            localStorage.setItem('messages_sent', messagesSent);
+            
+            // Show success message
+            formMessage.innerHTML = `✅ Thank you ${name}! Your message has been sent. (Total: ${messagesSent} messages)`;
+            formMessage.style.color = '#48bb78';
+            formMessage.style.fontWeight = 'bold';
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Clear message after 3 seconds
+            setTimeout(() => {
+                formMessage.innerHTML = '';
+            }, 3000);
+        } else {
+            formMessage.innerHTML = '❌ Please fill in all fields.';
+            formMessage.style.color = '#f56565';
+            setTimeout(() => {
+                formMessage.innerHTML = '';
+            }, 2000);
+        }
+    });
+    
+    // Social links with alert (can be replaced with real links)
+    document.getElementById('githubBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        showSocialAlert('GitHub Profile', 'https://github.com/');
+    });
+    
+    document.getElementById('linkedinBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        showSocialAlert('LinkedIn Profile', 'https://linkedin.com/');
+    });
+    
+    document.getElementById('twitterBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        showSocialAlert('Twitter Profile', 'https://twitter.com/');
+    });
+    
+    document.getElementById('portfolioBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        showSocialAlert('Portfolio Website', 'https://mukasadavid.dev');
+    });
+    
+    function showSocialAlert(platform, url) {
+        // Create custom notification
+        const notification = document.createElement('div');
+        notification.style.position = 'fixed';
+        notification.style.bottom = '20px';
+        notification.style.left = '50%';
+        notification.style.transform = 'translateX(-50%)';
+        notification.style.background = '#667eea';
+        notification.style.color = 'white';
+        notification.style.padding = '1rem 2rem';
+        notification.style.borderRadius = '2rem';
+        notification.style.zIndex = '2000';
+        notification.style.fontWeight = 'bold';
+        notification.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+        notification.innerHTML = `🔗 ${platform} would open: ${url}`;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 2000);
+    }
+    
+    // Animate skill bars on load
+    function animateSkills() {
+        const skillBars = document.querySelectorAll('.skill-progress');
+        skillBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 100);
+        });
+    }
+    
+    // Download resume feature
+    const downloadBtn = document.createElement('button');
+    downloadBtn.innerHTML = '📄 Download Resume';
+    downloadBtn.className = 'social-btn';
+    downloadBtn.style.marginTop = '1rem';
+    downloadBtn.style.width = '100%';
+    downloadBtn.style.cursor = 'pointer';
+    
+    downloadBtn.addEventListener('click', () => {
+        const resumeData = `
+            MUKASA DAVID - RESUME
+            ====================
+            Full Stack Developer
+            
+            Contact: david.mukasa@example.com | +256 123 456 789
+            Location: Kampala, Uganda
+            
+            EXPERIENCE:
+            - Senior Frontend Developer (2022-Present)
+            - Full Stack Developer (2019-2022)
+            - Junior Web Developer (2017-2019)
+            
+            SKILLS:
+            - JavaScript/React: 90%
+            - Python/Django: 85%
+            - HTML/CSS: 95%
+            - Node.js: 80%
+            
+            EDUCATION:
+            BSc in Computer Science - Makerere University
+        `;
+        
+        const blob = new Blob([resumeData], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Mukasa_David_Resume.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        // Show notification
+        const notification = document.createElement('div');
+        notification.innerHTML = '📄 Resume downloaded!';
+        notification.style.position = 'fixed';
+        notification.style.bottom = '20px';
+        notification.style.right = '20px';
+        notification.style.background = '#48bb78';
+        notification.style.color = 'white';
+        notification.style.padding = '0.8rem 1.5rem';
+        notification.style.borderRadius = '2rem';
+        notification.style.zIndex = '2000';
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 2000);
+    });
+    
+    // Add download button to the bio section
+    const socialLinks = document.querySelector('.social-links');
+    socialLinks.parentNode.insertBefore(downloadBtn, socialLinks.nextSibling);
+    
+    // Hover effect on info items
+    const infoItems = document.querySelectorAll('.info-item');
+    infoItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'translateX(5px)';
+            item.style.transition = '0.2s';
+        });
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'translateX(0)';
+        });
+    });
+    
+    // Initialize animations
+    window.addEventListener('load', () => {
+        animateSkills();
+        
+        // Show welcome message
+        setTimeout(() => {
+            const welcomeMsg = document.createElement('div');
+            welcomeMsg.innerHTML = '👋 Welcome to my personal bio page!';
+            welcomeMsg.style.position = 'fixed';
+            welcomeMsg.style.top = '20px';
+            welcomeMsg.style.left = '50%';
+            welcomeMsg.style.transform = 'translateX(-50%)';
+            welcomeMsg.style.background = '#667eea';
+            welcomeMsg.style.color = 'white';
+            welcomeMsg.style.padding = '0.8rem 1.5rem';
+            welcomeMsg.style.borderRadius = '2rem';
+            welcomeMsg.style.zIndex = '2000';
+            welcomeMsg.style.fontWeight = 'bold';
+            document.body.appendChild(welcomeMsg);
+            
+            setTimeout(() => {
+                welcomeMsg.remove();
+            }, 3000);
+        }, 500);
+    });
+    
+    // Dynamic greeting based on time of day
+    const hour = new Date().getHours();
+    let greeting = '';
+    if (hour < 12) greeting = 'Good Morning! ☀️';
+    else if (hour < 18) greeting = 'Good Afternoon! 🌤️';
+    else greeting = 'Good Evening! 🌙';
+    
+    const titleElement = document.querySelector('.title');
+    titleElement.innerHTML = `${greeting} I'm a Full Stack Developer & UI/UX Enthusiast`;
+</script>
+</body>
+</html>

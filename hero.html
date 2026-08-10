@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etania Mutoni - Concert Ticket</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        /* ===== TICKET CONTAINER ===== */
+        .ticket-wrapper {
+            background: #fff;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            overflow: hidden;
+        }
+        
+        /* ===== TOP COLOR BAR ===== */
+        .ticket-top-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #FF1493, #ff6b9d, #FF1493);
+        }
+        
+        /* ===== TICKET BODY ===== */
+        .ticket-body {
+            padding: 35px 35px 25px 35px;
+        }
+        
+        /* ===== HEADER ===== */
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px dashed #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .ticket-header .event-badge {
+            display: inline-block;
+            background: #FF1493;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 15px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .ticket-header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+        
+        .ticket-header h1 span {
+            color: #FF1493;
+        }
+        
+        .ticket-header .ticket-number {
+            text-align: right;
+            color: #999;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+        }
+        
+        .ticket-header .ticket-number strong {
+            color: #555;
+            font-size: 14px;
+        }
+        
+        /* ===== EVENT DETAILS ===== */
+        .event-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .event-details .detail-item {
+            text-align: center;
+        }
+        
+        .event-details .detail-item .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            font-weight: 700;
+        }
+        
+        .event-details .detail-item .value {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-top: 3px;
+        }
+        
+        .event-details .detail-item .value .icon {
+            margin-right: 5px;
+        }
+        
+        /* ===== DIVIDER ===== */
+        .ticket-divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0 20px 0;
+        }
+        
+        .ticket-divider .line {
+            flex: 1;
+            height: 2px;
+            background: #eee;
+        }
+        
+        .ticket-divider .circle {
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border: 2px solid #eee;
+            border-radius: 50%;
+        }
+        
+        /* ===== QR CODE & BOTTOM ===== */
+        .ticket-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 2px dashed #eee;
+        }
+        
+        .ticket-bottom .qr-section {
+            text-align: center;
+        }
+        
+        .ticket-bottom .qr-section .qr-code {
+            font-size: 70px;
+            line-height: 1;
+        }
+        
+        .ticket-bottom .qr-section .qr-label {
+            font-size: 10px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .ticket-bottom .info-section {
+            text-align: right;
+        }
+        
+        .ticket-bottom .info-section .info-line {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+        
+        .ticket-bottom .info-section .info-line strong {
+            color: #1a1a1a;
+        }
+        
+        /* ===== FOOTER ===== */
+        .ticket-footer {
+            background: #f8f8f8;
+            padding: 12px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+        }
+        
+        .ticket-footer .footer-text {
+            font-size: 11px;
+            color: #999;
+        }
+        
+        .ticket-footer .footer-text strong {
+            color: #FF1493;
+        }
+        
+        .ticket-footer .footer-text .heart {
+            color: #FF1493;
+        }
+        
+        /* ===== DOWNLOAD INSTRUCTION ===== */
+        .print-instruction {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+            font-size: 13px;
+        }
+        
+        .print-instruction a {
+            color: #FF1493;
+            text-decoration: none;
+        }
+        
+        .print-instruction a:hover {
+            text-decoration: underline;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 550px) {
+            .ticket-body {
+                padding: 20px;
+            }
+            .ticket-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .ticket-header h1 {
+                font-size: 22px;
+            }
+            .ticket-header .ticket-number {
+                text-align: left;
+            }
+            .event-details {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .ticket-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .ticket-bottom .info-section {
+                text-align: center;
+            }
+            .ticket-footer {
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+                padding: 12px 20px;
+            }
+        }
+        
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+                margin: 0;
+            }
+            .ticket-wrapper {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .print-instruction {
+                display: none !important;
+            }
+            .ticket-top-bar {
+                height: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="ticket-wrapper">
+        <!-- Top Color Bar -->
+        <div class="ticket-top-bar"></div>
+        
+        <!-- Ticket Body -->
+        <div class="ticket-body">
+            
+            <!-- Header -->
+            <div class="ticket-header">
+                <div>
+                    <div class="event-badge">🎟️ Exclusive Event</div>
+                    <h1>🎵 Life of the <span>Party</span></h1>
+                    <p style="color:#888;font-size:14px;margin-top:3px;">Featuring <strong style="color:#FF1493;">Etania Mutoni</strong></p>
+                </div>
+                <div class="ticket-number">
+                    TICKET #<br>
+                    <strong>ET-2026-0042</strong>
+                </div>
+            </div>
+            
+            <!-- Event Details -->
+            <div class="event-details">
+                <div class="detail-item">
+                    <div class="label">📍 Venue</div>
+                    <div class="value">Hockey Grounds</div>
+                    <div style="font-size:12px;color:#888;">Kampala, Uganda</div>
+                </div>
+                <div class="detail-item">
+                    <div class="label">📅 Date</div>
+                    <div class="value">April 4, 2026</div>
+                </div>
+                <div class="detail-item">
+                    <div class="label">🕐 Time</div>
+                    <div class="value">7:00 PM - 11:00 PM</div>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="ticket-divider">
+                <span class="line"></span>
+                <span class="circle"></span>
+                <span class="line"></span>
+                <span class="circle"></span>
+                <span class="line"></span>
+            </div>
+            
+            <!-- Bottom Section -->
+            <div class="ticket-bottom">
+                <div class="qr-section">
+                    <div class="qr-code">🎫</div>
+                    <div class="qr-label">Scan for entry</div>
+                </div>
+                <div class="info-section">
+                    <div class="info-line"><strong>Gate:</strong> A1</div>
+                    <div class="info-line"><strong>Seat:</strong> VIP-12</div>
+                    <div class="info-line"><strong>Attendee:</strong> [Your Name]</div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Footer -->
+        <div class="ticket-footer">
+            <span class="footer-text">📧 <strong>booking@etaniamutoni.com</strong></span>
+            <span class="footer-text">Made with <span class="heart">❤️</span> for Etania Mutoni</span>
+            <span class="footer-text">#LifeOfTheParty</span>
+        </div>
+    </div>
+    
+    <!-- Print Instruction -->
+    <div class="print-instruction">
+        📄 To save as PDF: Press <strong>Ctrl + P</strong> (Windows) or <strong>Cmd + P</strong> (Mac) and select <strong>"Save as PDF"</strong><br>
+        🔗 <a href="javascript:window.print()">Click here to print/save as PDF</a>
+    </div>
+    
+</body>
+</html>

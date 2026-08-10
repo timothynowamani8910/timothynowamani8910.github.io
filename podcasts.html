@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <title>Podcasts - Etania Mutoni</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;900&family=Roboto+Mono:wght@400;500&display=swap" media="print" onload="this.media='all';this.onload=null;">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css" fetchpriority="high">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/glightbox.min.css">
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="images/Etania10.jpg">
+    
+    <style>
+        .text-pink { color: #FF1493; }
+        
+        .site-navbar .site-navigation .site-menu > li > a {
+            color: rgba(255,255,255,0.7);
+        }
+        .site-navbar .site-navigation .site-menu > li > a:hover,
+        .site-navbar .site-navigation .site-menu .active > a {
+            color: #FF1493;
+        }
+        .site-navbar .site-navigation .site-menu > li.active > a {
+            color: #FF1493;
+        }
+        
+        .page-banner-custom {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 50%, #0a0a0a 100%);
+            padding: 100px 50px 80px 50px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .page-banner-custom h1 {
+            color: #fff;
+            font-size: 48px;
+            font-weight: 900;
+        }
+        .page-banner-custom h1 span { color: #FF1493; }
+        .page-banner-custom p { color: #aaa; font-size: 18px; }
+        
+        .podcast-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #333;
+            transition: 0.3s;
+            color: #fff;
+        }
+        .podcast-card:hover {
+            border-color: #FF1493;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.1);
+        }
+        .podcast-card .episode-number {
+            color: #FF1493;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .podcast-card h3 {
+            font-size: 20px;
+            margin: 8px 0 5px 0;
+            color: #fff;
+        }
+        .podcast-card .guest { color: #aaa; font-size: 14px; margin-bottom: 12px; }
+        .podcast-card .description { color: #888; font-size: 14px; line-height: 1.6; margin-bottom: 15px; }
+        .podcast-card audio { width: 100%; height: 40px; border-radius: 8px; }
+        .podcast-card .meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+        .podcast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .page-banner-custom { padding: 60px 20px 50px 20px; }
+            .page-banner-custom h1 { font-size: 32px; }
+            .podcast-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="site-wrap">
+
+    <!-- ===== HEADER ===== -->
+    <div class="site-navbar mt-4">
+        <div class="container py-1">
+            <div class="row align-items-center">
+                <div class="col-8 col-md-8 col-lg-4">
+                    <p class="subtitle" style="color: #FF1493;">🎧 The Life of the Party</p>
+                    <div class="site-logo mb-0">
+                        <a href="index.html" class="text-white h2 mb-0">
+                            <strong>Etania<i class="icon-heart text-danger" aria-hidden="true"></i>Mutoni<span class="text-primary">.</span></strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 col-md-4 col-lg-8">
+                    <nav class="site-navigation text-end text-md-end" role="navigation">
+                        <div class="d-inline-block d-lg-none ms-md-0 me-auto py-3">
+                            <button type="button" class="site-menu-toggle js-menu-toggle text-white btn btn-link p-0" aria-label="Open navigation menu" aria-expanded="false">
+                                <span class="icon-menu h3" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <ul class="site-menu js-clone-nav d-none d-lg-block">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="dj.html">DJs</a></li>
+                            <li><a href="schedule.html">Schedule</a></li>
+                            <li class="active"><a href="podcasts.html">Podcasts</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PAGE BANNER ===== -->
+    <div class="page-banner-custom">
+        <div>
+            <h1>🎙️ <span>Podcasts</span></h1>
+            <p>Listen to Etania's exclusive interviews and mixes</p>
+        </div>
+    </div>
+
+    <!-- ===== PODCASTS SECTION ===== -->
+    <div class="site-section">
+        <div class="container">
+            <div class="podcast-grid">
+                
+                <!-- Podcast 1 -->
+                <div class="podcast-card">
+                    <div class="episode-number">🎧 EPISODE 1</div>
+                    <h3>Life of the Party</h3>
+                    <div class="guest">with DJ Etania Mutoni</div>
+                    <p class="description">
+                        In this premier episode, Etania shares her journey from a 
+                        "simple Masaka girl" to becoming Uganda's top female DJ.
+                    </p>
+                    <audio controls>
+                        <source src="audio/podcast-ep1.mp3" type="audio/mpeg">
+                        Your browser does not support audio.
+                    </audio>
+                    <div class="meta">
+                        <span>📅 March 2026</span>
+                        <span>⏱️ 45 min</span>
+                    </div>
+                </div>
+                
+                <!-- Podcast 2 -->
+                <div class="podcast-card">
+                    <div class="episode-number">🎧 EPISODE 2</div>
+                    <h3>Women in Music</h3>
+                    <div class="guest">feat. Guest Female DJs</div>
+                    <p class="description">
+                        A powerful conversation about women navigating the music 
+                        industry in East Africa and breaking barriers.
+                    </p>
+                    <audio controls>
+                        <source src="audio/podcast-ep2.mp3" type="audio/mpeg">
+                        Your browser does not support audio.
+                    </audio>
+                    <div class="meta">
+                        <span>📅 April 2026</span>
+                        <span>⏱️ 52 min</span>
+                    </div>
+                </div>
+                
+                <!-- Podcast 3 -->
+                <div class="podcast-card">
+                    <div class="episode-number">🎧 EPISODE 3</div>
+                    <h3>The Life of a DJ</h3>
+                    <div class="guest">with Etania Mutoni</div>
+                    <p class="description">
+                        Behind the scenes of DJing - what it really takes to 
+                        entertain crowds and build a music career.
+                    </p>
+                    <audio controls>
+                        <source src="audio/podcast-ep3.mp3" type="audio/mpeg">
+                        Your browser does not support audio.
+                    </audio>
+                    <div class="meta">
+                        <span>📅 May 2026</span>
+                        <span>⏱️ 38 min</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="mb-5">
+                        <h3 class="footer-heading mb-4">About Etania Mutoni</h3>
+                        <p>Etania Mutoni is Uganda's premier female DJ, TV host, and influencer. Known as the "Life of the Party," she brings energy and joy to every event.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <h3 class="footer-heading mb-4">Navigations</h3>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="dj.html">DJs</a></li>
+                                <li><a href="schedule.html">Schedule</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="podcasts.html">Podcasts</a></li>
+                                <li><a href="events.html">Events</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="footer-heading mb-4">Follow Us</h3>
+                            <div>
+                                <a href="#" class="ps-0 pe-3" aria-label="Instagram"><span class="icon-instagram" aria-hidden="true"></span></a>
+                                <a href="#" class="ps-3 pe-3" aria-label="YouTube"><span class="icon-youtube" aria-hidden="true"></span></a>
+                                <a href="#" class="ps-3 pe-3" aria-label="Twitter"><span class="icon-twitter" aria-hidden="true"></span></a>
+                                <a href="#" class="ps-3 pe-3" aria-label="TikTok"><span class="icon-music" aria-hidden="true"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="mb-5">
+                        <h3 class="footer-heading mb-4">Watch Video</h3>
+   <div class="block-16">
+    <div class="image bg-image order-2" 
+         style="background-image: url('images/Etania29.jpg'); background-size:cover; background-position:center; min-height:400px; border-radius:10px; position:relative;" 
+         data-aos="fade-up" 
+         data-aos-delay="200">
+        <a href="videos/ETANIA (2).mp4" 
+           class="play-button glightbox" 
+           aria-label="Play Music Video"
+           style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;background:rgba(255,255,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:35px;color:#e74c3c;box-shadow:0 5px 20px rgba(0,0,0,0.3);transition:all 0.3s ease;">
+            <span class="icon-play" aria-hidden="true"></span>
+        </a>
+    </div>
+    <p style="text-align:center;margin-top:15px;color:#888;font-size:14px;">
+        <a href="https://www.youtube.com/@Foreveretania"
+           target="_blank" 
+           style="color:#FF1493;font-size:16px;text-decoration:none;font-weight:600;">
+            ▶ Watch Full Video
+        </a>
+    </p>
+</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-5 mt-5 text-center">
+                <div class="col-md-12">
+                    <p>            Copyright &copy;<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | Etania Mutoni <i class="icon-heart text-danger" aria-hidden="true"></i> Life of the Party.
+</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- ===== VIDEO MODAL ===== -->
+<div id="videoModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999;">
+    <span onclick="closeVideoModal()" style="position:absolute;top:20px;right:40px;color:#fff;font-size:40px;cursor:pointer;">&times;</span>
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;max-width:800px;">
+        <div style="position:relative;padding-bottom:56.25%;height:0;">
+            <iframe id="videoPlayer" src="" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+function openVideoModal() {
+    document.getElementById('videoModal').style.display = 'block';
+    document.getElementById('videoPlayer').src = 'https://www.youtube.com/embed/60ItHLz5WEA?autoplay=1&rel=0';
+    document.body.style.overflow = 'hidden';
+}
+function closeVideoModal() {
+    document.getElementById('videoModal').style.display = 'none';
+    document.getElementById('videoPlayer').src = '';
+    document.body.style.overflow = 'auto';
+}
+</script>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/swiper-bundle.min.js"></script>
+<script src="js/glightbox.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

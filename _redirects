@@ -1,12 +1,2 @@
 # _redirects
 /*    /index.html    200
-
-# Prevent caching for HTML files
-/*.html    /index.html    200
-
-# Let CSS and JS load normally
-/*.css    -
-/*.js     -
-/*.png    -
-/*.jpg    -
-/*.jpeg   -
